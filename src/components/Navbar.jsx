@@ -20,4 +20,4 @@ export const Navbar = ({darkTheme,setDarkTheme}) => {
         <Search/>
     </div>
   );
-}
+} 
