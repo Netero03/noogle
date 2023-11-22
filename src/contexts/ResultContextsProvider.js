@@ -1,28 +1,24 @@
 import React, {createContext,useContext ,useState} from 'react';
-import axios from 'axios';
+
 const ResultContext = createContext();
 const baseUrl = 'https://google-api31.p.rapidapi.com/'; 
 
 
-export const ResultContextsProvider = ({childern}) => {
+export const ResultContextsProvider = ({children}) => {
     const [results,setResults] =useState([]);
     const [isLoading,setIsLoading] = useState(false);
     const [searchTerm,setSearchTerm] = useState('');
+
+
     const getResults = async (type) => {
 
         setIsLoading(true);
-        try {
-        const response = await axios.request(`${baseUrl}${type}`,{
+        
+        const response = await fetch({
             method:'GET',
-            params: {
-                query: 'word cup',
-                gl: 'us',
-                lr: 'en',
-                num: '10',
-                start: '0'
-              },
+            url:`${baseUrl}${type}`,         
             headers:{
-                'content-type': 'application/json',
+                
                 'X-RapidAPI-Key': '7979c1de6cmsh09800700d6cd62bp13de41jsnc91fda03dc11',
                 'X-RapidAPI-Host': 'google-api31.p.rapidapi.com'
             }
@@ -32,16 +28,11 @@ export const ResultContextsProvider = ({childern}) => {
 
         setResults(data);
         setIsLoading(false);
-    } catch (error) {
-        console.error(error);
-    }
-        
-
-        
-    }
+        console.log('RCP');
+        }
     return (
         <ResultContext.Provider value={{getResults, results,searchTerm,setSearchTerm,isLoading }}>
-            { childern  }
+            {children}
         </ResultContext.Provider>
     )
 }
