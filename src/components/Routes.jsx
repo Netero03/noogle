@@ -7,11 +7,10 @@ import { Results } from './Results';
 
 export const Routes = () => {
   return (
-    <div className='p-4'>
-      
+    <div className='p-4'>    
         <MyRoutes>
-          <Route exact path="/" element={<Navigate  from='/' to="/websearch" />} />
-          <Route exact path='/websearch' element={<Results />}  />
+          <Route exact path="/" element={<Navigate  from='/' to="/search" />} />
+          <Route exact path='/search' element={<Results />}  />
           <Route exact path='/imagesearch' element={<Results />}  />
           <Route exact path='/' element={<Results />}  />
           <Route exact path='videosearch' element={<Results />} />          
