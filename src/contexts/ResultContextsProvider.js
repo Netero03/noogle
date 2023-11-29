@@ -1,13 +1,13 @@
 import React, {createContext,useContext ,useState} from 'react';
 
 const ResultContext = createContext();
-const baseUrl = 'https://google-search72.p.rapidapi.com'; 
-
+// const baseUrl = 'https://google-web-search1.p.rapidapi.com/'; 
+const baseUrl = 'https://google-search-json.p.rapidapi.com/search';
 
 export const ResultContextsProvider = ({children}) => {
-    const [items,setResults] =useState([]);
+    const [results,setResults] =useState([]);
     const [isLoading,setIsLoading] = useState(false);
-    const [searchTerm,setSearchTerm] = useState('');
+    const [searchTerm,setSearchTerm] = useState('Noogle');
 
 
     const getResults = async (type) => {
@@ -18,7 +18,9 @@ export const ResultContextsProvider = ({children}) => {
             method:'GET',       
             headers:{
                 'X-RapidAPI-Key': '7979c1de6cmsh09800700d6cd62bp13de41jsnc91fda03dc11',
-                'X-RapidAPI-Host': 'google-search72.p.rapidapi.com'
+                'X-RapidAPI-Host': 'google-search-json.p.rapidapi.com'
+                // 'X-RapidAPI-Key': '7979c1de6cmsh09800700d6cd62bp13de41jsnc91fda03dc11',
+                // 'X-RapidAPI-Host': 'google-web-search1.p.rapidapi.com'
             },
 
         });
@@ -31,7 +33,7 @@ export const ResultContextsProvider = ({children}) => {
         console.log('RCP');
         }
     return (
-        <ResultContext.Provider value={{getResults, items,searchTerm,setSearchTerm,isLoading }}>
+        <ResultContext.Provider value={{getResults, results,searchTerm,setSearchTerm,isLoading }}>
             {children}
         </ResultContext.Provider>
     )

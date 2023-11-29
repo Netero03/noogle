@@ -9,9 +9,9 @@ export const Routes = () => {
   return (
     <div className='p-4'>    
         <MyRoutes>
-          <Route exact path="/" element={<Navigate  from='/' to="/search" />} />
-          <Route exact path='/search' element={<Results />}  />
-          <Route exact path='/imagesearch' element={<Results />}  />
+          <Route exact path="/" element={<Navigate  from='/' to="/web" />} />
+          <Route exact path='/web' element={<Results />}  />
+          <Route exact path='/image' element={<Results />}  />
           <Route exact path='/' element={<Results />}  />
           <Route exact path='videosearch' element={<Results />} />          
         </MyRoutes>
